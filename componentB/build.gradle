@@ -1,10 +1,16 @@
-apply plugin: 'com.android.application'
+if (Boolean.valueOf(COMPONENTB_SWITCH)) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.yin.componentb"
+        if (Boolean.valueOf(COMPONENTB_SWITCH)) {
+            applicationId "com.yin.componentb"
+        }
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
@@ -20,10 +26,21 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            if (Boolean.valueOf(COMPONENTB_SWITCH)) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
     implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+    implementation project(':library')
 }

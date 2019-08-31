@@ -1,10 +1,16 @@
-apply plugin: 'com.android.application'
+if (Boolean.valueOf(COMPONENTA_SWITCH)) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.yin.componenta"
+        if (Boolean.valueOf(COMPONENTA_SWITCH)) {
+            applicationId "com.yin.componenta"
+        }
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
@@ -20,12 +26,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    sourceSets{
+        main{
+            if (Boolean.valueOf(COMPONENTA_SWITCH)){
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }else {
+                manifest.srcFile 'src/manifest/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
     implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
-
+    implementation project(':library')
 }
