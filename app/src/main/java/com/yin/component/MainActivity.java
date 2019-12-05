@@ -1,13 +1,70 @@
 package com.yin.component;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import com.yin.componet.library.base.activity.BaseActivity;
+import com.yin.componet.library.base.fragment.HSwipRefreshFragment;
+import com.yin.componet.library.base.fragment.ISwipRefreshInterface;
+
+public class MainActivity extends BaseActivity {
+
+    private HSwipRefreshFragment smartRefreshFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutRes() {
+        return R.layout.activity_main;
     }
+
+    @Override
+    protected void init() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        smartRefreshFragment = new HSwipRefreshFragment();
+        smartRefreshFragment.setInterface(iSmartRefreshInterface);
+        transaction.replace(R.id.fl, smartRefreshFragment);
+        transaction.commitAllowingStateLoss();
+    }
+
+    public ISwipRefreshInterface iSmartRefreshInterface = new ISwipRefreshInterface() {
+
+
+        @Override
+        public RecyclerView.LayoutManager getLayoutManager() {
+            return null;
+        }
+
+        @Override
+        public RecyclerView.Adapter getAdapter() {
+            return null;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public String getReplaceText() {
+            return null;
+        }
+
+        @Override
+        public Drawable getReplaceDrawable() {
+            return ContextCompat.getDrawable(mActivity, R.drawable.load_nothing);
+        }
+
+        @Override
+        public boolean initLoading() {
+            return true;
+        }
+
+        @Override
+        public void getData() {
+
+        }
+    };
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">componetLibrary</string>
+
+    <string name="net_error">网络异常，请点击重试</string>
+    <string name="cancle">取消</string>
+    <string name="ok">确定</string>
 </resources>

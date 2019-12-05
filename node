@@ -1,0 +1,7 @@
+1.  api是complie的替代品，api 与 complie 没有区别
+
+2.  最新官方推荐 implementation 用来代替 compile， implementation 会使AS编译速度更快
+
+3.  implementation声明的依赖包只限于模块内部使用，不允许其他模块使用
+
+api声明的依赖包时, 模块依赖于此模块，此模块使用api声明的依赖包是可以被其他模块使用

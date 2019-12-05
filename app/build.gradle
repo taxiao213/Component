@@ -20,14 +20,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
-
     implementation project(':library')
-    if (!Boolean.valueOf(COMPONENTA_SWITCH)){
+    if (!Boolean.valueOf(COMPONENTA_SWITCH)) {
         implementation project(':componentA')
     }
-    if (!Boolean.valueOf(COMPONENTB_SWITCH)){
+    if (!Boolean.valueOf(COMPONENTB_SWITCH)) {
         implementation project(':componentB')
     }
 }

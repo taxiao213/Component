@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingFrameLayout">
+        <attr name="net_error" format="boolean" />
+        <attr name="data_empty" format="boolean" />
+    </declare-styleable>
+</resources>
