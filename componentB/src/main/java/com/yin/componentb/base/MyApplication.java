@@ -1,10 +1,11 @@
-package com.yin.componet.library.base;
+package com.yin.componentb.base;
 
 import android.app.Application;
-import android.content.Context;
+
+import com.yin.componet.library.base.IComponentInterface;
 
 /**
- * Created by A35 on 2019/12/5
+ * Created by A35 on 2020/1/17
  * Email:yin13753884368@163.com
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213

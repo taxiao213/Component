@@ -1,32 +1,17 @@
 package com.yin.componet.library.utils;
 
-import android.app.Activity;
-import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Handler;
-import android.support.annotation.StringRes;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
-import android.util.Log;
-import android.util.TypedValue;
+import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 
 import com.yin.componet.library.base.MyApplication;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 
 /**
@@ -35,61 +20,88 @@ import java.util.ArrayList;
  */
 public class UIUtil {
 
-    //屏幕宽度
-    public static int mScreenWidth;
-    //屏幕高度
-    public static int mScreenHeight;
+    private static UIUtil mUiUti;
 
+    public UIUtil() {
 
-    public static Context getContext() {
+    }
+
+    public static UIUtil getInstance() {
+        if (mUiUti == null) {
+            synchronized (UIUtil.class) {
+                if (mUiUti == null) {
+                    mUiUti = new UIUtil();
+                }
+            }
+        }
+        return mUiUti;
+    }
+
+    public Application getContext() {
         return MyApplication.getApplication();
+    }
+
+    private float getDisplayScale() {
+        float scale = 0;
+        Application context = getContext();
+        if (context != null) {
+            DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+            if (displayMetrics != null) {
+                scale = displayMetrics.density;
+            }
+        }
+        return scale;
     }
 
     /**
      * dip转换px
      */
-    public static int dip2px(int dip) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (dip * scale + 0.5f);
+    public int dip2px(int dip) {
+        return (int) (dip * getDisplayScale() + 0.5f);
     }
-
 
     /**
      * px转换dip
      */
-    public static int px2dip(int px) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (px / scale + 0.5f);
+    public int px2dip(int px) {
+        return (int) (px / getDisplayScale() + 0.5f);
     }
 
 
     /**
      * 获取资源
      */
-    public static Resources getResources() {
-        return getContext().getResources();
-    }
-
-
-    /**
-     * 获取dimen
-     */
-    public static int getDimens(int resId) {
-        return getResources().getDimensionPixelSize(resId);
+    public Resources getResources() {
+        Resources resources = null;
+        Application context = getContext();
+        if (context != null) {
+            resources = context.getResources();
+        }
+        return resources;
     }
 
     /**
      * 获取drawable
      */
-    public static Drawable getDrawable(int resId) {
-        return ActivityCompat.getDrawable(getContext(), resId);
+    public Drawable getDrawable(int resId) {
+        Drawable drawable = null;
+        Application context = getContext();
+        if (context != null) {
+            drawable = context.getResources().getDrawable(resId);
+        }
+        return drawable;
     }
 
     /**
      * 获取颜色
      */
-    public static int getColor(int resId) {
-        return getResources().getColor(resId);
+    public int getColor(int resId) {
+        int color = 0;
+        Application context = getContext();
+        if (context != null) {
+            color = context.getResources().getColor(resId);
+        }
+        return color;
     }
 
     /**
@@ -97,10 +109,14 @@ public class UIUtil {
      *
      * @return 屏幕高度
      */
-    public static int getScreenHeight() {
-        if (mScreenHeight == 0) {
-            WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-            mScreenHeight = wm.getDefaultDisplay().getHeight();
+    public int getScreenHeight() {
+        int mScreenHeight = 0;
+        Application context = getContext();
+        if (context != null) {
+            WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            if (windowManager != null) {
+                mScreenHeight = windowManager.getDefaultDisplay().getHeight();
+            }
         }
         return mScreenHeight;
     }
@@ -110,10 +126,14 @@ public class UIUtil {
      *
      * @return 屏幕宽度
      */
-    public static int getScreenWidth() {
-        if (mScreenWidth == 0) {
-            WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-            mScreenWidth = wm.getDefaultDisplay().getWidth();
+    public int getScreenWidth() {
+        int mScreenWidth = 0;
+        Application context = getContext();
+        if (context != null) {
+            WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            if (windowManager != null) {
+                mScreenWidth = windowManager.getDefaultDisplay().getWidth();
+            }
         }
         return mScreenWidth;
     }
@@ -123,7 +143,7 @@ public class UIUtil {
      *
      * @return 屏幕高度
      */
-    public static int getRealScreenHeight() {
+    public int getRealScreenHeight() {
         int mScreenHeight = 0;
         Point display = getDisplay();
         if (display != null) {
@@ -132,26 +152,18 @@ public class UIUtil {
         return mScreenHeight;
     }
 
-    private static Point getDisplay() {
+    private Point getDisplay() {
         Point point = null;
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        if (wm != null) {
-            Display defaultDisplay = wm.getDefaultDisplay();
-            point = new Point();
-            defaultDisplay.getRealSize(point);
+        Application context = getContext();
+        if (context != null) {
+            WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            if (windowManager != null) {
+                Display defaultDisplay = windowManager.getDefaultDisplay();
+                point = new Point();
+                defaultDisplay.getRealSize(point);
+            }
         }
         return point;
-    }
-
-    /**
-     * 设置指定textView的字体大小，单位sp
-     *
-     * @param textView textView
-     * @param textSize textSize
-     */
-    public static void setTextSize(TextView textView, int textSize) {
-        if (textView != null)
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
     }
 
 }

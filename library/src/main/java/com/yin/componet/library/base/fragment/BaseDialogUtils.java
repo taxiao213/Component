@@ -53,8 +53,8 @@ public class BaseDialogUtils {
             RecyclerView.LayoutManager layoutManager = iDialogInterface.getLayoutManager();
             ry.setLayoutManager(layoutManager);
             if (layoutManager instanceof GridLayoutManager) {
-                ry.setPadding(UIUtil.dip2px(10), 0, 0, 0);
-                ry.addItemDecoration(new GridItemDecoration(UIUtil.dip2px(10)));
+                ry.setPadding(UIUtil.getInstance().dip2px(10), 0, 0, 0);
+                ry.addItemDecoration(new GridItemDecoration(UIUtil.getInstance().dip2px(10)));
             }
             RecyclerView.Adapter adapter = iDialogInterface.getAdapter();
             ry.setAdapter(adapter);

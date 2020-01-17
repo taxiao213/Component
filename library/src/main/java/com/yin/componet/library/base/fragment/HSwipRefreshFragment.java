@@ -52,7 +52,7 @@ public class HSwipRefreshFragment extends BaseFragment {
             RecyclerView.LayoutManager layoutManager = refreshInterface.getLayoutManager();
             ry.setLayoutManager(layoutManager);
             if (layoutManager instanceof GridLayoutManager) {
-                ry.setPadding(UIUtil.dip2px(10), 0, 0, 0);
+                ry.setPadding(UIUtil.getInstance().dip2px(10), 0, 0, 0);
                 ry.addItemDecoration(new GridItemDecoration());
             }
             adapter = refreshInterface.getAdapter();
