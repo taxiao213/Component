@@ -16,7 +16,7 @@ public class MyApplication implements IComponentInterface {
 
     @Override
     public void setApplication(Application application) {
-        mApplication=application;
+        mApplication = application;
     }
 
     public static Application getApplication() {
