@@ -1,1 +1,7 @@
-include ':app', ':library', ':componentA', ':componentB', ':skinlibrary'
+if (Boolean.valueOf(SKIN_LIBRARY_SWITCH)) {
+    include ':library', ':componentA', ':componentB', ':skinlibrary'
+} else {
+    include ':app', ':library', ':componentA', ':componentB', ':skinlibrary'
+}
+
+

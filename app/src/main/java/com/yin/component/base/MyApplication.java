@@ -3,6 +3,7 @@ package com.yin.component.base;
 import android.app.Application;
 import android.text.TextUtils;
 
+import com.component.skinlibrary.base.SkinApplication;
 import com.yin.componet.library.base.IComponentInterface;
 
 /**
@@ -11,7 +12,7 @@ import com.yin.componet.library.base.IComponentInterface;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
-public class MyApplication extends Application {
+public class MyApplication extends SkinApplication {
     private Application application;
     private String[] componentApplication = new String[]{"com.yin.componenta.base.MyApplication", "com.yin.componentb.base.MyApplication", "com.yin.componet.library.base.MyApplication", "com.yin.componet.library.base.MyApplication"};
 

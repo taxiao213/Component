@@ -1,10 +1,12 @@
 package com.yin.component;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.yin.componet.library.base.activity.BaseActivity;
 import com.yin.componet.library.base.fragment.HSwipRefreshFragment;
@@ -67,4 +69,8 @@ public class MainActivity extends BaseActivity {
 
         }
     };
+
+    public void jump(View view) {
+        startActivity(new Intent(mActivity, SecondActivity.class));
+    }
 }
