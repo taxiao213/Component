@@ -16,6 +16,7 @@ import com.component.skinlibrary.base.SkinEngine;
 import java.io.File;
 
 /**
+ * 动态换肤
  * Created by A35 on 2020/2/19
  * Email:yin13753884368@163.com
  * CSDN:http://blog.csdn.net/yin13753884368/article
@@ -35,25 +36,31 @@ public class SecondActivity extends SkinActivity {
         tv_test1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 加载外部皮肤资源包
                 Log.e("test1 >>> ", "-------------start-------------");
                 long start = System.currentTimeMillis();
-                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "skinlibrary-debug.apk";
+                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "test.skin";
                 SkinEngine.getInstances().updateSkin(SecondActivity.this, path);
                 long end = System.currentTimeMillis() - start;
                 Log.e("test1 >>> ", "换肤耗时（毫秒）：" + end);
                 Log.e("test1 >>> ", "-------------end---------------");
-                SkinEngine.getInstances().setNightMode(SecondActivity.this);
+
+                // 加载内部资源 夜间模式
+//                SkinEngine.getInstances().setNightMode(SecondActivity.this);
             }
         });
         bt_test2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 加载外部皮肤资源包
                 Log.e("test2 >>> ", "-------------start-------------");
                 long start = System.currentTimeMillis();
                 SkinEngine.getInstances().updateSkin(SecondActivity.this, "");
                 long end = System.currentTimeMillis() - start;
                 Log.e("test2 >>> ", "换肤耗时（毫秒）：" + end);
                 Log.e("test2 >>> ", "-------------end---------------");
+
+                // 加载内部资源 白天模式
 //                SkinEngine.getInstances().setDayMode(SecondActivity.this);
             }
         });
