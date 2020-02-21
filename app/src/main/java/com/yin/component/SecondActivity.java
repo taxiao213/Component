@@ -22,7 +22,7 @@ import java.io.File;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
-public class SecondActivity extends SkinActivity {
+public class SecondActivity extends AppCompatActivity {
 
     private TextView tv_test1;
     private Button bt_test2;
