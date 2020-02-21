@@ -1,7 +1,7 @@
 if (Boolean.valueOf(SKIN_LIBRARY_SWITCH)) {
-    include ':library', ':componentA', ':componentB', ':skinlibrary'
+    include ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2'
 } else {
-    include ':app', ':library', ':componentA', ':componentB', ':skinlibrary'
+    include ':app', ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2'
 }
 
 
