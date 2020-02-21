@@ -14,6 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.component.skinlibrary.utils.ActionBarUtils;
+import com.component.skinlibrary.utils.NavigationBarUtils;
+import com.component.skinlibrary.utils.StatusBarUtils;
+
 import java.io.File;
 import java.lang.reflect.Method;
 
@@ -105,6 +109,26 @@ public class SkinResources {
      * 所有得到当前属性的类型Resources.getResourceTypeName(resId); 进行判断
      */
     Object getBackgroud(Activity activity, int id) {
+        return getObject(activity, id);
+    }
+
+    /**
+     * 获取src 是特殊情况，因为：
+     * 可能是Color
+     * 可能是Drawable
+     * 可能是Mipmap
+     */
+    public Object getSrc(Activity activity, int id) {
+        return getObject(activity, id);
+    }
+
+    /**
+     * 获取src 是特殊情况，因为：
+     * 可能是Color
+     * 可能是Drawable
+     * 可能是Mipmap
+     */
+    private Object getObject(Activity activity, int id) {
         Object object = null;
         String resourceTypeName = null;
         if (SkinEngine.getInstances().isLoadInternal()) {
@@ -229,4 +253,27 @@ public class SkinResources {
         return mDefaultSkin;
     }
 
+    /**
+     * 更新 颜色 statusBar actionBar   NavigationBar
+     */
+    public void updatePhoneStatusBarAction(AppCompatActivity activity) {
+        if (mDefaultSkin) {
+            int ActionId = mAppResources.getIdentifier("colorPrimary", "color", mApplication.getPackageName());
+            int statusId = mAppResources.getIdentifier("colorPrimaryDark", "color", mApplication.getPackageName());
+            ActionBarUtils.forActionBar(activity, mAppResources.getColor(ActionId));
+            NavigationBarUtils.forNavigation(activity, mAppResources.getColor(statusId));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                StatusBarUtils.forStatusBar(activity, mAppResources.getColor(statusId));
+            }
+
+        } else {
+            int ActionId = mSkinResources.getIdentifier("colorPrimary", "color", mSkinPkgName);
+            int statusId = mSkinResources.getIdentifier("colorPrimaryDark", "color", mSkinPkgName);
+            ActionBarUtils.forActionBar(activity, mSkinResources.getColor(ActionId));
+            NavigationBarUtils.forNavigation(activity, mSkinResources.getColor(statusId));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                StatusBarUtils.forStatusBar(activity, mSkinResources.getColor(statusId));
+            }
+        }
+    }
 }

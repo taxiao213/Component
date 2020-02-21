@@ -1,20 +1,15 @@
 package com.component.skinlibrary.base;
 
 import android.app.Application;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.component.skinlibrary.R;
-import com.component.skinlibrary.SkinActivity;
 import com.component.skinlibrary.utils.ActionBarUtils;
-import com.component.skinlibrary.utils.NavigationUtils;
+import com.component.skinlibrary.utils.NavigationBarUtils;
 import com.component.skinlibrary.utils.StatusBarUtils;
 
-import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -49,7 +44,7 @@ public class SkinEngine extends Observable {
     public void registerActivityLifecycleCallbacks(Application application) {
         if (application != null) {
             this.mApplication = application;
-            // 注册Activity生命周期监听，之前讲过AOP切面
+            // 注册Activity生命周期监听，AOP切面
             application.registerActivityLifecycleCallbacks(new SkinActivityLifecycleCallbacks());
             SkinResources.getInstances().init(application);
         }
@@ -62,15 +57,10 @@ public class SkinEngine extends Observable {
      * @param skinPath
      */
     public void updateSkin(AppCompatActivity activity, String skinPath) {
+        // 我是被观察者，通知所有的观察者 点击换肤第一步：通知所有的观察者，需要换肤了
         setLoadInternal(false);
         SkinResources.getInstances().setSkinResources(mApplication, skinPath);
-        // 我是被观察者，通知所有的观察者 点击换肤第一步：通知所有的观察者，需要换肤了
-//        int color = SkinResources.getInstances().getColor(activity, R.color.colorPrimary);
-//        ActionBarUtils.forActionBar(activity, color);
-//        NavigationUtils.forNavigation(activity, color);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            StatusBarUtils.forStatusBar(activity, color);
-//        }
+        SkinResources.getInstances().updatePhoneStatusBarAction(activity);
         setChanged();
         notifyObservers();
     }
@@ -88,18 +78,18 @@ public class SkinEngine extends Observable {
     // 默认
     public void setDayMode(AppCompatActivity activity) {
         setDayMode(activity, AppCompatDelegate.MODE_NIGHT_NO);
-        setOtherUI(activity);
+        setStatusBarAction(activity);
     }
 
     // 换肤
     public void setNightMode(AppCompatActivity activity) {
         setDayMode(activity, AppCompatDelegate.MODE_NIGHT_YES);
-        setOtherUI(activity);
+        setStatusBarAction(activity);
     }
 
-    private void setOtherUI(AppCompatActivity activity) {
+    public void setStatusBarAction(AppCompatActivity activity) {
         ActionBarUtils.forActionBar(activity);
-        NavigationUtils.forNavigation(activity);
+        NavigationBarUtils.forNavigation(activity);
         StatusBarUtils.forStatusBar(activity);
     }
 

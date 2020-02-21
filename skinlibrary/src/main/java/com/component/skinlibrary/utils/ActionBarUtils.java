@@ -20,11 +20,11 @@ public class ActionBarUtils {
                 android.R.attr.colorPrimary
         });
         int color = a.getColor(0, 0);
-        a.recycle();
         ActionBar actionBar = activity.getSupportActionBar();
         if (actionBar != null) {
             actionBar.setBackgroundDrawable(new ColorDrawable(color));
         }
+        a.recycle();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

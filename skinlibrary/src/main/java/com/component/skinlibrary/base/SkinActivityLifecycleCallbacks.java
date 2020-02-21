@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.view.LayoutInflaterCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 
 import java.lang.reflect.Field;
@@ -48,6 +49,13 @@ public class SkinActivityLifecycleCallbacks implements Application.ActivityLifec
     public void onActivityResumed(Activity activity) {
         if (mSkinFactory2 != null) {
             mSkinFactory2.update(null, null);
+        }
+        if (SkinEngine.getInstances().isLoadInternal()) {
+            // 加载内部资源，夜间 白天模式切换
+            SkinEngine.getInstances().setStatusBarAction((AppCompatActivity) activity);
+        } else {
+            // 加载皮肤资源包
+            SkinResources.getInstances().updatePhoneStatusBarAction((AppCompatActivity) activity);
         }
     }
 

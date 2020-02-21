@@ -11,7 +11,7 @@ import android.os.Build;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
-public class NavigationUtils {
+public class NavigationBarUtils {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static void forNavigation(Activity activity) {

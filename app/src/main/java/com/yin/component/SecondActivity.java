@@ -35,26 +35,26 @@ public class SecondActivity extends SkinActivity {
         tv_test1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Log.e("test1 >>> ", "-------------start-------------");
+                Log.e("test1 >>> ", "-------------start-------------");
                 long start = System.currentTimeMillis();
                 String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "skinlibrary-debug.apk";
                 SkinEngine.getInstances().updateSkin(SecondActivity.this, path);
                 long end = System.currentTimeMillis() - start;
                 Log.e("test1 >>> ", "换肤耗时（毫秒）：" + end);
-                Log.e("test1 >>> ", "-------------end---------------");*/
+                Log.e("test1 >>> ", "-------------end---------------");
                 SkinEngine.getInstances().setNightMode(SecondActivity.this);
             }
         });
         bt_test2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Log.e("test2 >>> ", "-------------start-------------");
+                Log.e("test2 >>> ", "-------------start-------------");
                 long start = System.currentTimeMillis();
                 SkinEngine.getInstances().updateSkin(SecondActivity.this, "");
                 long end = System.currentTimeMillis() - start;
                 Log.e("test2 >>> ", "换肤耗时（毫秒）：" + end);
-                Log.e("test2 >>> ", "-------------end---------------");*/
-                SkinEngine.getInstances().setDayMode(SecondActivity.this);
+                Log.e("test2 >>> ", "-------------end---------------");
+//                SkinEngine.getInstances().setDayMode(SecondActivity.this);
             }
         });
     }

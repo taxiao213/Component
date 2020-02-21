@@ -142,7 +142,7 @@ public class SkinWidgetViewList {
                         }
                         break;
                     case SRC:
-                        Object src = SkinResources.getInstances().getBackgroud(mActivity, attrValueInt);
+                        Object src = SkinResources.getInstances().getSrc(mActivity, attrValueInt);
                         if (src instanceof Integer) {
                             ((ImageView) mView).setImageDrawable(new ColorDrawable((Integer) src));
                         } else {
