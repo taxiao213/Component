@@ -14,7 +14,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".SkinActivity"
-            android:configChanges="uiMode"> <!-- 需要配置此属性=uiMode，才能更换navigation  -->
+            android:configChanges="uiMode"> <!-- 需要配置此属性=uiMode，才能更换navigationBar  -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -30,4 +30,7 @@ dependencies {
     if (!Boolean.valueOf(SKIN_LIBRARY_SWITCH)) {
         implementation project(':skinlibrary')
     }
+    if (!Boolean.valueOf(SKIN_LIBRARY2_SWITCH)) {
+        implementation project(':skinlibrary2')
+    }
 }
