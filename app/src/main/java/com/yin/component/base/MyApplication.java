@@ -4,7 +4,11 @@ import android.app.Application;
 import android.text.TextUtils;
 
 import com.component.skinlibrary.base.SkinApplication;
-import com.yin.componet.library.base.IComponentInterface;
+import com.yin.component.library.base.IComponentInterface;
+import com.yin.component.library.bean.Content;
+import com.yin.component.library.bean.RecordPathManager;
+import com.yin.componenta.ComponentA_MainActivity;
+import com.yin.componentb.ComponentB_MainActivity;
 
 /**
  * Created by A35 on 2020/1/17
@@ -21,6 +25,15 @@ public class MyApplication extends SkinApplication {
         super.onCreate();
         this.application = this;
         initComponentApplication();
+        loadClass();
+    }
+
+    /**
+     * 加载需要收集跳转的类
+     */
+    private void loadClass() {
+        RecordPathManager.joinGroup(Content.COMPONENT_A, Content.COMPONENT_PATH_A_1, ComponentA_MainActivity.class);
+        RecordPathManager.joinGroup(Content.COMPONENT_B, Content.COMPONENT_PATH_B_1, ComponentB_MainActivity.class);
     }
 
     /**

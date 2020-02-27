@@ -1,4 +1,4 @@
-package com.yin.componet.library.utils;
+package com.yin.component.library.utils;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 
-import com.yin.componet.library.base.MyApplication;
+import com.yin.component.library.base.MyApplication;
 
 
 

@@ -1,4 +1,4 @@
-package com.yin.componet.library.base.fragment;
+package com.yin.component.library.base.fragment;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.yin.componet.library.R;
+import com.yin.component.library.R;
 
 
 /**

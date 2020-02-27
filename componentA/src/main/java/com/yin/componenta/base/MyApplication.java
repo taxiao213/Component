@@ -2,7 +2,7 @@ package com.yin.componenta.base;
 
 import android.app.Application;
 
-import com.yin.componet.library.base.IComponentInterface;
+import com.yin.component.library.base.IComponentInterface;
 
 /**
  * Created by A35 on 2020/1/17

@@ -1,4 +1,4 @@
-package com.yin.componet.library.base.fragment;
+package com.yin.component.library.base.fragment;
 
 /**
  * Created by yin13 on 2019/10/12

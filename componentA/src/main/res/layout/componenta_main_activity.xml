@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:onClick="jump"
-        android:text="Hello World!" />
+    tools:context=".ComponentA_MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,24 +17,25 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="jumpA"
             android:gravity="center"
-            android:text="componenta" />
+            android:onClick="jumpMain"
+            android:text="返回" />
 
         <TextView
             android:id="@+id/tv_componentb"
-            android:onClick="jumpB"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="componentb" />
+            android:onClick="jumpOther"
+            android:text="跳转componentB" />
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/fl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="我是componentA"
+        android:textStyle="bold" />
 </LinearLayout>

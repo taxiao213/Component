@@ -1,4 +1,4 @@
-package com.yin.componet.library.utils;
+package com.yin.component.library.utils;
 
 import android.text.TextUtils;
 

@@ -1,4 +1,4 @@
-package com.yin.componet.library.base;
+package com.yin.component.library.base;
 
 import android.app.Application;
 

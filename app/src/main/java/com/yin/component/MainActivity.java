@@ -8,9 +8,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.yin.componet.library.base.activity.BaseActivity;
-import com.yin.componet.library.base.fragment.HSwipRefreshFragment;
-import com.yin.componet.library.base.fragment.ISwipRefreshInterface;
+import com.yin.componenta.ComponentA_MainActivity;
+import com.yin.componentb.ComponentB_MainActivity;
+import com.yin.component.library.base.activity.BaseActivity;
+import com.yin.component.library.base.fragment.HSwipRefreshFragment;
+import com.yin.component.library.base.fragment.ISwipRefreshInterface;
 
 public class MainActivity extends BaseActivity {
 
@@ -72,5 +74,13 @@ public class MainActivity extends BaseActivity {
 
     public void jump(View view) {
         startActivity(new Intent(mActivity, SecondActivity.class));
+    }
+
+    public void jumpA(View view) {
+        startActivity(new Intent(mActivity, ComponentA_MainActivity.class));
+    }
+
+    public void jumpB(View view) {
+        startActivity(new Intent(mActivity, ComponentB_MainActivity.class));
     }
 }

@@ -1,4 +1,4 @@
-package com.yin.componet.library.base.activity;
+package com.yin.component.library.base.activity;
 
 
 import android.content.pm.ActivityInfo;

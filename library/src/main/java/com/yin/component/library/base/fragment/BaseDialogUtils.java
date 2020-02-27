@@ -1,4 +1,4 @@
-package com.yin.componet.library.base.fragment;
+package com.yin.component.library.base.fragment;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AlertDialog;
@@ -9,10 +9,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.yin.componet.library.R;
-import com.yin.componet.library.base.activity.BaseActivity;
-import com.yin.componet.library.utils.StringUtils;
-import com.yin.componet.library.utils.UIUtil;
+import com.yin.component.library.R;
+import com.yin.component.library.base.activity.BaseActivity;
+import com.yin.component.library.utils.StringUtils;
+import com.yin.component.library.utils.UIUtil;
 
 
 /**

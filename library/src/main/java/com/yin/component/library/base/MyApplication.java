@@ -1,7 +1,6 @@
-package com.yin.componet.library.base;
+package com.yin.component.library.base;
 
 import android.app.Application;
-import android.content.Context;
 
 /**
  * Created by A35 on 2019/12/5

@@ -1,4 +1,4 @@
-package com.yin.componet.library.base.fragment;
+package com.yin.component.library.base.fragment;
 
 import android.support.v7.widget.RecyclerView;
 

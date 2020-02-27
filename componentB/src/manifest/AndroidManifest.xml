@@ -3,8 +3,7 @@
     package="com.yin.componentb">
 
     <application>
-        <activity android:name=".MainActivity"/>
-
+        <activity android:name=".ComponentB_MainActivity" />
     </application>
 
 </manifest>
