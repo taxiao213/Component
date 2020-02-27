@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.component.annotationa.ARouter2;
 import com.component.skinlibrary.SkinActivity;
 import com.component.skinlibrary.base.SkinEngine;
 
@@ -22,6 +23,7 @@ import java.io.File;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
+@ARouter2(path = "/app/SecondActivity")
 public class SecondActivity extends AppCompatActivity {
 
     private TextView tv_test1;

@@ -33,6 +33,10 @@ dependencies {
     implementation project(':annotation')
     //  注解处理器
     annotationProcessor project(':compiler')
+
+    //  用javapoet   写法https://github.com/square/javapoet
+    implementation project(':AnnotationA')
+    annotationProcessor project(':compilerA')
     if (!Boolean.valueOf(COMPONENTA_SWITCH)) {
         implementation project(':componentA')
     }
