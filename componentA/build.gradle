@@ -3,6 +3,7 @@ if (Boolean.valueOf(COMPONENTA_SWITCH)) {
 } else {
     apply plugin: 'com.android.library'
 }
+def support = rootProject.ext.dependencies
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -43,7 +44,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+    support.each { k, v -> implementation v }
     implementation project(':library')
 }

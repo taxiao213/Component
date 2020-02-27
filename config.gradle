@@ -48,4 +48,9 @@ ext {
     AppManagerVersion = '1.0.1'
     photoviewVersion = '1.2.4'
 
+    dependencies = [
+            "appcompat"       : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            "constraintLayout": "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+    ]
+
 }

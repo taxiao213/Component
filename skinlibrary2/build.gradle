@@ -4,8 +4,10 @@ if (Boolean.valueOf(SKIN_LIBRARY2_SWITCH)) {
     apply plugin: 'com.android.library'
 }
 
+def support = rootProject.ext.dependencies
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         if (Boolean.valueOf(SKIN_LIBRARY2_SWITCH)) {
             applicationId "com.component.skinlibrary2"
@@ -41,6 +43,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+    support.each { k, v -> implementation v }
 }
