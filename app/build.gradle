@@ -9,6 +9,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //  在gradle配置此参数用于APT传参接收
+        //  切记 必须写在 defaultConfig下
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [content: 'hello APT >> Annotation Processing Tool']
+            }
+        }
     }
     buildTypes {
         release {
@@ -21,6 +29,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':library')
+    //  注解器
+    implementation project(':annotation')
+    //  注解处理器
+    annotationProcessor project(':compiler')
     if (!Boolean.valueOf(COMPONENTA_SWITCH)) {
         implementation project(':componentA')
     }

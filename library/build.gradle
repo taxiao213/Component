@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+def support = rootProject.ext.dependencies
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -27,7 +28,6 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    api "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+    support.each { k, v -> api v }
     api "com.android.support:recyclerview-v7:${supportLibraryVersion}"
 }

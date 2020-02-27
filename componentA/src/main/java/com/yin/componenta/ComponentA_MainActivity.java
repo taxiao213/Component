@@ -36,7 +36,8 @@ public class ComponentA_MainActivity extends AppCompatActivity {
         }*/
 
         //  第二种写法
-        Class<?> targetClass = RecordPathManager.getTargetClass(Content.COMPONENT_B, Content.COMPONENT_PATH_B_1);
-        startActivity(new Intent(this, targetClass));
+        /*Class<?> targetClass = RecordPathManager.getTargetClass(Content.COMPONENT_B, Content.COMPONENT_PATH_B_1);
+        startActivity(new Intent(this, targetClass));*/
+
     }
 }

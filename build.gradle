@@ -3,6 +3,10 @@ apply from: "config.gradle"
 buildscript {
 
     repositories {
+        // 超级实用：某某影响，很多被墙，强烈推荐阿里云镜像更新
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
         google()
         jcenter()
     }
@@ -16,6 +20,10 @@ buildscript {
 
 allprojects {
     repositories {
+        // 超级实用：某某影响，很多被墙，强烈推荐阿里云镜像更新
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
         google()
         jcenter()
     }

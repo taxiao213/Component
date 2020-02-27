@@ -8,12 +8,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.component.annotation.ARouter;
 import com.yin.componenta.ComponentA_MainActivity;
 import com.yin.componentb.ComponentB_MainActivity;
 import com.yin.component.library.base.activity.BaseActivity;
 import com.yin.component.library.base.fragment.HSwipRefreshFragment;
 import com.yin.component.library.base.fragment.ISwipRefreshInterface;
 
+@ARouter(path = "/app/MainActivity")
 public class MainActivity extends BaseActivity {
 
     private HSwipRefreshFragment smartRefreshFragment;
