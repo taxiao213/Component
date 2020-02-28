@@ -1,9 +1,9 @@
 if (Boolean.valueOf(SKIN_LIBRARY_SWITCH)) {
-    include ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA'
+    include ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA', ':arouterlibrary'
 } else if (Boolean.valueOf(SKIN_LIBRARY2_SWITCH)) {
-    include ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA'
+    include ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA', ':arouterlibrary'
 } else {
-    include ':app', ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA'
+    include ':app', ':library', ':componentA', ':componentB', ':skinlibrary', ':skinlibrary2', ':annotation', ':compiler', ':AnnotationA', ':compilerA', ':arouterlibrary'
 }
 
 
