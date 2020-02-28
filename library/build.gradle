@@ -30,4 +30,5 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     support.each { k, v -> api v }
     api "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+    api project(':arouterlibrary')
 }

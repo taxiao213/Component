@@ -9,11 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.component.annotation.ARouter;
+import com.component.annotation.ARouterBean;
+import com.component.arouterlibrary.core.ARouterLoadGroup;
+import com.component.arouterlibrary.core.ARouterLoadPath;
+import com.yin.component.test.ARouter$$Group$$componentA;
 import com.yin.componenta.ComponentA_MainActivity;
 import com.yin.componentb.ComponentB_MainActivity;
 import com.yin.component.library.base.activity.BaseActivity;
 import com.yin.component.library.base.fragment.HSwipRefreshFragment;
 import com.yin.component.library.base.fragment.ISwipRefreshInterface;
+
+import java.util.HashMap;
 
 @ARouter(path = "/app/MainActivity")
 public class MainActivity extends BaseActivity {
@@ -79,7 +85,22 @@ public class MainActivity extends BaseActivity {
     }
 
     public void jumpA(View view) {
-        startActivity(new Intent(mActivity, ComponentA_MainActivity.class));
+//        startActivity(new Intent(mActivity, ComponentA_MainActivity.class));
+
+        ARouterLoadGroup aRouter$$Group$$componentA = new ARouter$$Group$$componentA();
+        HashMap<String, Class<? extends ARouterLoadPath>> stringClassHashMap = aRouter$$Group$$componentA.loadGroup();
+        // 通过componentA组名获取对应路由路径对象
+        Class<? extends ARouterLoadPath> componentA = stringClassHashMap.get("componentA");
+        try {
+            // 类加载动态加载路由路径对象
+            ARouterLoadPath aRouterLoadPath = componentA.newInstance();
+            HashMap<String, ARouterBean> aRouterBeanHashMap = aRouterLoadPath.loadPath();
+            ARouterBean aRouterBean = aRouterBeanHashMap.get("/componentA/ComponentA_MainActivity");
+            Intent intent = new Intent(this, aRouterBean.getClazz());
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void jumpB(View view) {
