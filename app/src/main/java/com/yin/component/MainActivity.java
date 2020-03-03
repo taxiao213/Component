@@ -12,6 +12,7 @@ import com.component.annotation.ARouter;
 import com.component.annotation.ARouterBean;
 import com.component.arouterlibrary.core.ARouterLoadGroup;
 import com.component.arouterlibrary.core.ARouterLoadPath;
+import com.yin.component.apt.ARouter$$Group$$app;
 import com.yin.component.test.ARouter$$Group$$componentA;
 import com.yin.componenta.ComponentA_MainActivity;
 import com.yin.componentb.ComponentB_MainActivity;
@@ -105,5 +106,24 @@ public class MainActivity extends BaseActivity {
 
     public void jumpB(View view) {
         startActivity(new Intent(mActivity, ComponentB_MainActivity.class));
+    }
+
+    public void jumpArouter(View view) {
+//        startActivity(new Intent(mActivity, ArouterActivity.class));
+        ARouter$$Group$$app group = new ARouter$$Group$$app();
+        HashMap<String, Class<? extends ARouterLoadPath>> map = group.loadGroup();
+        Class<? extends ARouterLoadPath> aClass = map.get("app");
+        try {
+            if (aClass != null) {
+                ARouterLoadPath aRouterLoadPath = aClass.newInstance();
+                HashMap<String, ARouterBean> loadPath = aRouterLoadPath.loadPath();
+                ARouterBean aRouterBean = loadPath.get("/app/ArouterActivity");
+                startActivity(new Intent(mActivity, aRouterBean.getClazz()));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

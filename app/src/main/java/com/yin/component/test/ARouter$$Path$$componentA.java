@@ -1,10 +1,7 @@
 package com.yin.component.test;
 
-import com.component.annotation.ARouter;
 import com.component.annotation.ARouterBean;
-import com.component.arouterlibrary.core.ARouterLoadGroup;
 import com.component.arouterlibrary.core.ARouterLoadPath;
-import com.yin.component.MainActivity;
 import com.yin.componenta.ComponentA_MainActivity;
 
 import java.util.HashMap;

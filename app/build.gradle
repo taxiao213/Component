@@ -14,7 +14,7 @@ android {
         //  切记 必须写在 defaultConfig下
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [content: 'hello APT >> Annotation Processing Tool']
+                arguments = [moduleName: project.name, packageNameForAPT: packageNameForAPT, content: " hello >>> "]
             }
         }
     }

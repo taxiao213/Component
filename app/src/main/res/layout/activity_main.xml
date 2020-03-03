@@ -16,6 +16,15 @@
         android:onClick="jump"
         android:text="Hello World!" />
 
+    <TextView
+        android:id="@+id/tv_arouter"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:onClick="jumpArouter"
+        android:text="跳转路由界面，用apt+javapoet生成" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

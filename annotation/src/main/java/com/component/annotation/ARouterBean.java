@@ -125,4 +125,14 @@ public class ARouterBean {
             return new ARouterBean(this);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ARouterBean{" +
+                "element=" + element +
+                ", clazz=" + clazz +
+                ", groupName='" + groupName + '\'' +
+                ", path='" + path + '\'' +
+                '}';
+    }
 }

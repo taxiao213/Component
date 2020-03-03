@@ -26,6 +26,7 @@
         <activity
             android:name=".SecondActivity"
             android:configChanges="uiMode" />
+        <activity android:name=".ArouterActivity" />
     </application>
 
 </manifest>
