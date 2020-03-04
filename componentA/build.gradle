@@ -18,7 +18,13 @@ android {
         versionName rootProject.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        //  在gradle配置此参数用于APT传参接收
+        //  切记 必须写在 defaultConfig下
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.name, packageNameForAPT: packageNameForAPT, content: " hello >>> componenta "]
+            }
+        }
     }
 
     buildTypes {
@@ -50,4 +56,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     support.each { k, v -> implementation v }
     implementation project(':library')
+    //  注解处理器
+    annotationProcessor project(':compiler')
 }

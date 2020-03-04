@@ -6,8 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yin.component.library.bean.Content;
-import com.yin.component.library.bean.RecordPathManager;
+import com.component.annotation.ARouter2;
 
 /**
  * Created by A35 on 2020/2/27
@@ -15,6 +14,7 @@ import com.yin.component.library.bean.RecordPathManager;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
+@ARouter2(path = "/componentA/ComponentA_MainActivity", groupName = "componentA")
 public class ComponentA_MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

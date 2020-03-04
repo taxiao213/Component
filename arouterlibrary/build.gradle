@@ -24,5 +24,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     support.each { k, v -> implementation v }
-    implementation project (':annotation')
+    api project (':annotation')
 }
