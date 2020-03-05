@@ -117,10 +117,13 @@ public class MainActivity extends BaseActivity {
             if (aClass != null) {
                 ARouterLoadPath aRouterLoadPath = aClass.newInstance();
                 HashMap<String, ARouterBean> loadPath = aRouterLoadPath.loadPath();
-                ARouterBean aRouterBean = loadPath.get("/app/ArouterActivity");
-                startActivity(new Intent(mActivity, aRouterBean.getClazz()));
+                ARouterBean aRouterBean = loadPath.get("/app/ParameterActivity");
+                Intent intent = new Intent(mActivity, aRouterBean.getClazz());
+                intent.putExtra("name","我是mainActitivy");
+                intent.putExtra("age",1);
+                startActivity(intent);
+                // 通过注解传参数 Parameter$$ParameterActivity
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
