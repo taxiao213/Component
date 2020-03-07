@@ -184,6 +184,8 @@ public class ParameterProcessor extends AbstractProcessor {
                             // pathMap.put("/componenta/getDrawable", ARouterBean.create(ARouterBean.Type.CALL,ComponentADrawableImpl.class,"/componenta/getDrawable","componenta"));
                             // t.s = ARouterManager.getInstance().build("/componentA/ComponentA_MainActivity").navigation(this);
                             // $N.drawable = ($T)$T.getInstance().build($S).navigation($N)
+                            // MainActivity activity = (MainActivity)object;
+                            // activity.drawable = (ComponentADrawable)ARouterManager.getInstance().build("/componentA/getDrawable").navigation(activity);
                             methodSpecBuilder.addStatement(methodContent, Constant.PARAMETER_METHOD_NAME3, ClassName.get(typeMirror), ClassName.get(Constant.BASE_PACKAGE, Constant.AROUTER_MANAGER), annotationValue, Constant.PARAMETER_METHOD_NAME3);
                         } else if (isString) {
                             methodSpecBuilder.addStatement(methodContent, Constant.PARAMETER_METHOD_NAME3, Constant.PARAMETER_METHOD_NAME3, annotationValue);
