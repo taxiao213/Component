@@ -7,6 +7,7 @@ package com.component.compiler.utils;
  * Github:https://github.com/taxiao213
  */
 public class Constant {
+    public final static String ANNOTATION_TYPES = "com.component.annotation.ARouter2";// 允许/支持的注解类型
     public final static String MODULE_NAME = "moduleName";// 用于接收模块名称
     public final static String PACKAGE_NAME_FOR_APT = "packageNameForAPT";// 用于接收生成的apt路径
     public final static String APT_NAME_PREFIX_PATH = "ARouter$$Path$$";// 生成的文件名称前缀
@@ -17,7 +18,11 @@ public class Constant {
     public static final String ACTIVITY = "android.app.Activity";
     public static final String SPLITTER = "/";
     // 包名前缀封装
-    static final String BASE_PACKAGE = "com.component.arouterlibrary";
+    public static final String BASE_PACKAGE = "com.component.arouterlibrary";
+    // ARouterManager
+    public static final String AROUTER_MANAGER = "ARouterManager";
+    // 跨模块的业务接口
+    public static final String CALL =  BASE_PACKAGE + ".core.Call";
     // 路由组Group加载接口
     public static final String AROUTE_GROUP = BASE_PACKAGE + ".core.ARouterLoadGroup";
     // 路由组Group对应的详细Path加载接口

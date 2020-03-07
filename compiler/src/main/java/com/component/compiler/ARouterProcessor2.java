@@ -38,7 +38,6 @@ import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
 
-
 /**
  * Annotation Processing Tool
  * 注解处理器
@@ -53,7 +52,7 @@ import javax.tools.Diagnostic;
 
 @AutoService(Processor.class)
 //  允许/支持的注解类型，让注解处理器处理（新增annotation module） 对应方法 getSupportedAnnotationTypes
-@SupportedAnnotationTypes({"com.component.annotation.ARouter2"})
+@SupportedAnnotationTypes({Constant.ANNOTATION_TYPES})
 // 指定JDK编译版本 对应方法 getSupportedSourceVersion
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 // Android 和 Java 交互 注解处理器接收的参数  对应方法 getSupportedOptions
@@ -150,8 +149,10 @@ public class ARouterProcessor2 extends AbstractProcessor {
     private void parseElements(Set<? extends Element> elementsAnnotatedWith) {
         // 通过Element工具类，获取Activity、Callback类型
         TypeElement activityElement = elementUtils.getTypeElement(Constant.ACTIVITY);
+        TypeElement callElement = elementUtils.getTypeElement(Constant.CALL);
         // 显示类信息（获取被注解节点，类节点）这里也叫自描述 Mirror
         TypeMirror activityMirror = activityElement.asType();
+        TypeMirror callMirror = callElement.asType();
         for (Element element : elementsAnnotatedWith) {
             //  获取每个元素类信息，用于比较
             TypeMirror typeMirror = element.asType();
@@ -170,6 +171,8 @@ public class ARouterProcessor2 extends AbstractProcessor {
             // 类型工具类方法isSubtype，相当于instance一样
             if (typeUtils.isSubtype(typeMirror, activityMirror)) {
                 bean.setType(ARouterBean.Type.ACTIVITY);
+            } else if (typeUtils.isSubtype(typeMirror, callMirror)) {
+                bean.setType(ARouterBean.Type.CALL);
             } else {
                 //  不匹配抛出异常，谨慎使用！考虑维护问题
                 throw new RuntimeException("@ARouter注解目前仅限用于Activity类之上");

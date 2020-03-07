@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.component.annotation.ARouter2;
+import com.component.arouterlibrary.ARouterManager;
 
 /**
  * Created by A35 on 2020/2/27
@@ -39,5 +40,11 @@ public class ComponentA_MainActivity extends AppCompatActivity {
         /*Class<?> targetClass = RecordPathManager.getTargetClass(Content.COMPONENT_B, Content.COMPONENT_PATH_B_1);
         startActivity(new Intent(this, targetClass));*/
 
+
+        ARouterManager
+                .getInstance()
+                .build("/app/MainActivity")
+                .withResultString("name","value")
+                .navigation(this, 100);
     }
 }

@@ -1,5 +1,6 @@
 package com.component.compiler;
 
+import com.component.annotation.ARouterBean;
 import com.component.annotation.Parameter;
 import com.component.compiler.utils.Constant;
 import com.component.compiler.utils.EmptyUtils;
@@ -109,6 +110,7 @@ public class ParameterProcessor extends AbstractProcessor {
         if (EmptyUtils.isEmpty(tempTypeMap)) return;
         //  通过Elements工具类 获取Parameter类型
         TypeElement activityElement = elementUtils.getTypeElement(Constant.ACTIVITY);
+        TypeElement callElement = elementUtils.getTypeElement(Constant.CALL);
         TypeElement paramenterElement = elementUtils.getTypeElement(Constant.PARAMETER_PATH);
 
         messager.printMessage(Diagnostic.Kind.NOTE, "开始生成类文件");
@@ -118,7 +120,7 @@ public class ParameterProcessor extends AbstractProcessor {
             TypeElement element = entry.getKey();
             List<Element> value = entry.getValue();
             // 如果类名的类型和Activity类型不匹配
-            if (!typeUtils.isSubtype(element.asType(), activityElement.asType())) {
+            if (!typeUtils.isSubtype(element.asType(), activityElement.asType()) && !typeUtils.isSubtype(element.asType(), callElement.asType())) {
                 messager.printMessage(Diagnostic.Kind.NOTE, "@Parameter该注解目前只能用于Activity之上");
                 throw new RuntimeException("@Parameter该注解目前只能用于Activity之上");
             }
@@ -163,16 +165,27 @@ public class ParameterProcessor extends AbstractProcessor {
                         // t.s = t.getIntent().getBooleanExtra("isSuccess", t.age);
                         methodContent += "getBooleanExtra($S, " + finalValue + ")";
                     } else {
+                        messager.printMessage(Diagnostic.Kind.NOTE, " >>> typeMirror " + typeMirror + " callElement " + callElement.asType().toString());
                         // t.s = t.getIntent.getStringExtra("s");
                         if (typeMirror.toString().equalsIgnoreCase(Constants.STRING)) {
                             methodContent += "getStringExtra($S)";
                             isString = true;
+                        } else if (typeUtils.isSubtype(typeMirror, callElement.asType())) {
+                            messager.printMessage(Diagnostic.Kind.NOTE, " >>> isSubtype) ");
+                            // t.s = ARouterManager.getInstance().build("/componentA/ComponentA_MainActivity").navigation(this);
+                            methodContent = finalValue + " = ($T)$T.getInstance().build($S).navigation($N)";
                         }
                     }
+                    messager.printMessage(Diagnostic.Kind.NOTE, " >>> methodContent " + methodContent);
                     // 健壮代码
                     if (methodContent.endsWith(")")) {
                         // 添加最终拼接方法内容语句
-                        if (isString) {
+                        if (typeUtils.isSubtype(typeMirror, callElement.asType())) {
+                            // pathMap.put("/componenta/getDrawable", ARouterBean.create(ARouterBean.Type.CALL,ComponentADrawableImpl.class,"/componenta/getDrawable","componenta"));
+                            // t.s = ARouterManager.getInstance().build("/componentA/ComponentA_MainActivity").navigation(this);
+                            // $N.drawable = ($T)$T.getInstance().build($S).navigation($N)
+                            methodSpecBuilder.addStatement(methodContent, Constant.PARAMETER_METHOD_NAME3, ClassName.get(typeMirror), ClassName.get(Constant.BASE_PACKAGE, Constant.AROUTER_MANAGER), annotationValue, Constant.PARAMETER_METHOD_NAME3);
+                        } else if (isString) {
                             methodSpecBuilder.addStatement(methodContent, Constant.PARAMETER_METHOD_NAME3, Constant.PARAMETER_METHOD_NAME3, annotationValue);
                         } else {
                             methodSpecBuilder.addStatement(methodContent, Constant.PARAMETER_METHOD_NAME3, Constant.PARAMETER_METHOD_NAME3, annotationValue, Constant.PARAMETER_METHOD_NAME3);

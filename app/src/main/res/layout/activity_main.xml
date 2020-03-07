@@ -35,20 +35,25 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="jumpA"
             android:gravity="center"
+            android:onClick="jumpA"
             android:text="componenta" />
 
         <TextView
             android:id="@+id/tv_componentb"
-            android:onClick="jumpB"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="jumpB"
             android:text="componentb" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  />
 
     <FrameLayout
         android:id="@+id/fl"

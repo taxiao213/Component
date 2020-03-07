@@ -13,7 +13,9 @@ import javax.lang.model.util.Elements;
 public class ARouterBean {
 
     public enum Type {
-        ACTIVITY
+        ACTIVITY,
+        // 跨模块的业务接口
+        CALL
     }
 
     private Type type;// 枚举类型
