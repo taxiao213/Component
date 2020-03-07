@@ -55,6 +55,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"  />
 
+    <TextView
+        android:id="@+id/tv_library_mvp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:onClick="jumpLibrary"
+        android:text="library_mvp" />
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="match_parent"

@@ -21,6 +21,7 @@ import com.component.arouterlibrary.core.ARouterLoadPath;
 import com.component.arouterlibrary.core.ParameterLoad;
 import com.yin.component.apt.ARouter$$Group$$app;
 import com.yin.component.library.componenta.ComponentADrawable;
+import com.yin.component.library.mvp.view.LibraryActivity;
 import com.yin.componentb.ComponentB_MainActivity;
 import com.yin.component.library.base.activity.BaseActivity;
 import com.yin.component.library.base.fragment.HSwipRefreshFragment;
@@ -155,7 +156,11 @@ public class MainActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+
+    public void jumpLibrary(View view) {
+        startActivity(new Intent(this, LibraryActivity.class));
     }
 
     @Override
