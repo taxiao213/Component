@@ -8,5 +8,6 @@
 
     <application>
         <activity android:name=".mvp.view.LibraryActivity" />
+        <activity android:name=".mvp_demo.login.LoginActivity" />
     </application>
 </manifest>
