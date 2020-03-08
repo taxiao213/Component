@@ -3,12 +3,10 @@ package com.yin.component.library.mvp.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.component.arouterlibrary.core.ParameterLoad;
 import com.yin.component.library.R;
 import com.yin.component.library.mvp.DownLoaderContract;
 import com.yin.component.library.mvp.model.ImageBean;
@@ -16,6 +14,7 @@ import com.yin.component.library.mvp.presenter.DownLoaderPresenter;
 import com.yin.component.library.mvp.utils.Constant;
 
 /**
+ * V 层
  * Created by A35 on 2020/3/7
  * Email:yin13753884368@163.com
  * CSDN:http://blog.csdn.net/yin13753884368/article

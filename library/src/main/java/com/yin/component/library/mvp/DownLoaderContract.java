@@ -21,5 +21,4 @@ public interface DownLoaderContract {
         // P层得到结果返回，通知V层
         void reponseDownLoaderResult(boolean isSuccess, ImageBean imageBean);
     }
-
 }

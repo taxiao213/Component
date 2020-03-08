@@ -1,6 +1,5 @@
 package com.yin.component.library.mvp.presenter;
 
-import android.app.Activity;
 
 import com.yin.component.library.mvp.DownLoaderContract;
 import com.yin.component.library.mvp.engine.DownLoaderEngine;
@@ -8,6 +7,7 @@ import com.yin.component.library.mvp.model.ImageBean;
 import com.yin.component.library.mvp.view.LibraryActivity;
 
 /**
+ * P 层
  * Created by A35 on 2020/3/7
  * Email:yin13753884368@163.com
  * CSDN:http://blog.csdn.net/yin13753884368/article

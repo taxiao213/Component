@@ -2,7 +2,6 @@ package com.yin.component.library.mvp.engine;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.widget.Toast;
 
 import com.yin.component.library.mvp.DownLoaderContract;
 import com.yin.component.library.mvp.model.ImageBean;
@@ -11,13 +10,11 @@ import com.yin.component.library.mvp.utils.Constant;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
-import javax.xml.datatype.Duration;
 
 /**
+ * M 层
  * Created by A35 on 2020/3/7
  * Email:yin13753884368@163.com
  * CSDN:http://blog.csdn.net/yin13753884368/article
