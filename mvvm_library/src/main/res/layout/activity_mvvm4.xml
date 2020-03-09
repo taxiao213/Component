@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义布局需要绑定的类型 布局最外侧用<layout> 标签-->
+    <data>
+        <!-- name 名称，type 绝对路径 双向绑定@={userinfo.name}-->
+        <variable
+            name="userinfo"
+            type="com.component.mvvm_library.bean.UserInfo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入账号"
+            android:text="@={userinfo.name}" />
+
+        <EditText
+            android:id="@+id/et_psw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入密码"
+            android:text="@={userinfo.psw}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="登陆" />
+    </LinearLayout>
+</layout>

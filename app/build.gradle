@@ -24,6 +24,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 添加databing引用
+    // Failed resolution of: Landroid/databinding/DataBinderMapperImpl 组件化开发时，用到的模块都需要添加引用
+    dataBinding{
+        enabled = true
+    }
 }
 
 dependencies {
@@ -37,6 +43,7 @@ dependencies {
     //  用javapoet   写法https://github.com/square/javapoet
     implementation project(':AnnotationA')
     annotationProcessor project(':compilerA')
+
     if (!Boolean.valueOf(COMPONENTA_SWITCH)) {
         implementation project(':componentA')
     }
@@ -48,5 +55,8 @@ dependencies {
     }
     if (!Boolean.valueOf(SKIN_LIBRARY2_SWITCH)) {
         implementation project(':skinlibrary2')
+    }
+    if (!Boolean.valueOf(MVVM_SWITCH)) {
+        implementation project(':mvvm_library')
     }
 }

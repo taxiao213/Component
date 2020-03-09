@@ -22,6 +22,7 @@ import com.component.arouterlibrary.core.ParameterLoad;
 import com.yin.component.apt.ARouter$$Group$$app;
 import com.yin.component.library.componenta.ComponentADrawable;
 import com.yin.component.library.mvp.view.LibraryActivity;
+import com.yin.component.library.mvp_demo.login.LoginActivity;
 import com.yin.componentb.ComponentB_MainActivity;
 import com.yin.component.library.base.activity.BaseActivity;
 import com.yin.component.library.base.fragment.HSwipRefreshFragment;
@@ -175,4 +176,17 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    public void jumpLogin(View view) {
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    // 跳转 databinding用法
+    public void jumpMvvm(View view) {
+        try {
+            Class<?> mvvm = Class.forName("com.component.mvvm_library.MVVM_MainActivity");
+            startActivity(new Intent(this, mvvm));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

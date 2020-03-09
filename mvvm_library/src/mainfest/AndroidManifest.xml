@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.component.mvvm_library">
+
+    <application>
+        <activity android:name=".MVVM_MainActivity" />
+         <!-- 需要配置此属性=uiMode，才能更换navigation  -->
+    </application>
+
+</manifest>

@@ -1,0 +1,54 @@
+if (Boolean.valueOf(MVVM_SWITCH)) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+def support = rootProject.ext.dependencies
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        if (Boolean.valueOf(MVVM_SWITCH)) {
+            applicationId "com.component.mvvm_library"
+        }
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (Boolean.valueOf(MVVM_SWITCH)) {
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            } else {
+                consumerProguardFiles 'proguard-rules.pro'
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            if (Boolean.valueOf(MVVM_SWITCH)) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/mainfest/AndroidManifest.xml'
+                java {
+                    //  release时 debug 目录下文件不需要合并到主公程
+                    exclude '**/debug/**'
+                }
+            }
+        }
+    }
+
+    // 添加databing引用
+    // Failed resolution of: Landroid/databinding/DataBinderMapperImpl 组件化开发时，用到的模块都需要添加引用
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    support.each { k, v -> api v }
+}
